@@ -27,4 +27,4 @@
 ## Описание решения
 ![](project_steps.jpg)
 
-* [Код в Jupiter Notebook с визуализацией данных и описанием самой успешной модели из исследования](https://github.com/VeraInginen/churn_prediction/blob/master/Churn_Inginen.ipynb)
+* [Код в Jupiter Notebook с визуализацией данных и описанием самой успешной модели из исследования](https://nbviewer.jupyter.org/github/VeraInginen/churn_prediction/blob/master/Churn_Inginen.ipynb)
