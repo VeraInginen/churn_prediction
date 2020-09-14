@@ -5,7 +5,7 @@
 
 **Ингинен Вера Максимовна**
 
-Краткий отчет по выполненной работе [здесь](https://www.canva.com/design/DAD-gXhX7OI/BIqldbkPnHYYEteHpiAyyA/view?utm_content=DAD-gXhX7OI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+Краткий отчет-презентация по выполненной работе [здесь](https://www.canva.com/design/DAD-gXhX7OI/BIqldbkPnHYYEteHpiAyyA/view?utm_content=DAD-gXhX7OI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 
 Соревнование на площадке Kaggle ["Прогнозирование оттока пользователей"](https://www.kaggle.com/c/telecom-clients-prediction2?rvi=1)
 
