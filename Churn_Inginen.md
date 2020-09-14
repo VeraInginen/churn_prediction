@@ -23,7 +23,7 @@
 - интернет-порталы, интернет-магазины
 - досуговые сервисы и пр.
 
-## План:
+## План
  - [Описание решения](#описание-решения)
  - [Описательный анализ данных](#анализ-признаков)
  - [Выбор метрики, критерии оценки модели, pipeline](#Критерии-оценки-модели)
@@ -71,7 +71,7 @@ from itertools import product, permutations, combinations
 %matplotlib inline
 ```
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Описание решения
 
@@ -314,7 +314,7 @@ data['actual'].value_counts()
 
 Выборка очень несбалансирована в отношении целевых классов.
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Анализ признаков
 
@@ -427,7 +427,7 @@ plt.savefig('cardinality.png', transparent=True);
 * Также целесообразно проверить эффективность отдельных подходов к кодированию низкокардинальных и высококардинальных категориальных переменных
 * Следует внимательно подойти к выбору способа кодирования категориальных переменных с большим количеством категорий, чтобы при бинаризации переменная не "размала" свою информацию по большому количеству столбцов
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Критерии оценки модели
 * **Основная метрика качества** - ROC AUC (площадь под кривой качества в осях точности и полноты). Устойчива для несбалансированных классов
@@ -523,7 +523,7 @@ for idx, spl in enumerate([2, 5, 10]):
 skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=SEED)
 ```
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Эксперименты на этапе предобработки данных
 1. Добавление признака-индикатора с информацией о наличии пропуска в данных,
@@ -578,7 +578,7 @@ def train_cv_valid_scores(method, X_train, y_train, X_valid, y_valid, numeric_co
     return cv_scores, roc_scores, add
 ```
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Обучение алгоритмов на лучших параметрах предобработки выборки
 
@@ -638,175 +638,6 @@ for clf in [('gb', gb, False), ('lr', logit, False), ('rf', rf, False), ('xgb', 
 
 
 ```python
-res_df
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Method</th>
-      <th>LB_score</th>
-      <th>Valid</th>
-      <th>CV_mean</th>
-      <th>CV_std</th>
-      <th>CV_f1</th>
-      <th>CV_f2</th>
-      <th>CV_f3</th>
-      <th>CV_f4</th>
-      <th>CV_f5</th>
-      <th>CV_f6</th>
-      <th>CV_f7</th>
-      <th>CV_f8</th>
-      <th>CV_f9</th>
-      <th>CV_f10</th>
-      <th>stat_Shapiro</th>
-      <th>p_Shapiro</th>
-      <th>stat_ttest</th>
-      <th>p_ttest</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>gb</td>
-      <td>nan</td>
-      <td>0.7378</td>
-      <td>0.7417</td>
-      <td>0.0099</td>
-      <td>0.733</td>
-      <td>0.7336</td>
-      <td>0.7385</td>
-      <td>0.7586</td>
-      <td>0.75</td>
-      <td>0.7301</td>
-      <td>0.7327</td>
-      <td>0.737</td>
-      <td>0.7472</td>
-      <td>0.7559</td>
-      <td>0.8836</td>
-      <td>0.1434</td>
-      <td>nan</td>
-      <td>nan</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>lr</td>
-      <td>nan</td>
-      <td>0.6814</td>
-      <td>0.6828</td>
-      <td>0.0144</td>
-      <td>0.6812</td>
-      <td>0.6653</td>
-      <td>0.6877</td>
-      <td>0.6949</td>
-      <td>0.6982</td>
-      <td>0.6794</td>
-      <td>0.6512</td>
-      <td>0.6826</td>
-      <td>0.6868</td>
-      <td>0.7008</td>
-      <td>0.9188</td>
-      <td>0.347</td>
-      <td>-18.6926</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>rf</td>
-      <td>nan</td>
-      <td>0.6914</td>
-      <td>0.6903</td>
-      <td>0.0184</td>
-      <td>0.6822</td>
-      <td>0.6647</td>
-      <td>0.7033</td>
-      <td>0.7027</td>
-      <td>0.7095</td>
-      <td>0.6573</td>
-      <td>0.6764</td>
-      <td>0.6999</td>
-      <td>0.7144</td>
-      <td>0.693</td>
-      <td>0.931</td>
-      <td>0.4574</td>
-      <td>-11.2562</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>xgb</td>
-      <td>nan</td>
-      <td>0.7067</td>
-      <td>0.7097</td>
-      <td>0.011</td>
-      <td>0.7056</td>
-      <td>0.7063</td>
-      <td>0.7274</td>
-      <td>0.7309</td>
-      <td>0.7012</td>
-      <td>0.6994</td>
-      <td>0.6957</td>
-      <td>0.7051</td>
-      <td>0.7117</td>
-      <td>0.7135</td>
-      <td>0.8977</td>
-      <td>0.2065</td>
-      <td>-9.9618</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cb</td>
-      <td>nan</td>
-      <td>0.7412</td>
-      <td>0.7493</td>
-      <td>0.0126</td>
-      <td>0.7303</td>
-      <td>0.7364</td>
-      <td>0.7585</td>
-      <td>0.7647</td>
-      <td>0.7554</td>
-      <td>0.7401</td>
-      <td>0.7383</td>
-      <td>0.7415</td>
-      <td>0.7616</td>
-      <td>0.7661</td>
-      <td>0.8936</td>
-      <td>0.1862</td>
-      <td>3.8006</td>
-      <td>0.0042</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-res_df.to_csv('res.csv')
-```
-
-
-```python
 best_scores = res_df[['CV_f%s' % i for i in range(1, 11)]].iloc[0].astype(float).values
 ```
 
@@ -828,7 +659,7 @@ plt.show()
 ```
 
 
-![png](output_42_0.png)
+![png](output_40_0.png)
 
 
 Для бейзлайн-модели был выбран  алгоритм градиентного бустинга, показавший лучший результат при минимальной дисперсии.
@@ -879,7 +710,7 @@ plt.savefig('learning_curve_02.png', transparent=True)
 ```
 
 
-![png](output_46_0.png)
+![png](output_44_0.png)
 
 
 По кривым обучения можно сделать предположение, что начиная с 50% объектов выборки перестает существенно увеличиваться качество модели. Расходы на приобретение или обработку дополнительных данных скорее всего будут мало-оправданы. 
@@ -922,7 +753,7 @@ write_to_submission_file(model.predict_proba(X_test)[:,1], 'cbclf.csv') #0.71916
 
 Предположения о несущественном преимуществе классификации алгоритма CatBoost над алгоритмом GradientBoosting (по величине дисперсии метрик) подтвердилось значением метрики на тестовых данных соревнования
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Настройка алгоритмов
 
@@ -1054,133 +885,7 @@ grid = {'learning_rate': [0.03, 0.1],
         'l2_leaf_reg': [1, 3, 5, 7, 9]}
 
 grid_search_result = model.grid_search(param_grid=grid, X=cv_dataset, cv=skf, plot=False, verbose=False)
-```
 
-    
-    bestTest = 0.231057879
-    bestIteration = 776
-    
-    
-    bestTest = 0.2317181274
-    bestIteration = 549
-    
-    
-    bestTest = 0.231133195
-    bestIteration = 712
-    
-    
-    bestTest = 0.2310037692
-    bestIteration = 305
-    
-    
-    bestTest = 0.2315408304
-    bestIteration = 800
-    
-    
-    bestTest = 0.2318520311
-    bestIteration = 378
-    
-    
-    bestTest = 0.2311965163
-    bestIteration = 955
-    
-    
-    bestTest = 0.2313000607
-    bestIteration = 527
-    
-    
-    bestTest = 0.2313736252
-    bestIteration = 950
-    
-    
-    bestTest = 0.2316387952
-    bestIteration = 290
-    
-    
-    bestTest = 0.2315269738
-    bestIteration = 592
-    
-    
-    bestTest = 0.2318955541
-    bestIteration = 193
-    
-    
-    bestTest = 0.2313090106
-    bestIteration = 999
-    
-    
-    bestTest = 0.2322828326
-    bestIteration = 148
-    
-    
-    bestTest = 0.2312334682
-    bestIteration = 642
-    
-    
-    bestTest = 0.2319148623
-    bestIteration = 170
-    
-    
-    bestTest = 0.2314977799
-    bestIteration = 788
-    
-    
-    bestTest = 0.2317496567
-    bestIteration = 170
-    
-    
-    bestTest = 0.2310341041
-    bestIteration = 787
-    
-    
-    bestTest = 0.2322183271
-    bestIteration = 154
-    
-    
-    bestTest = 0.2351610596
-    bestIteration = 327
-    
-    
-    bestTest = 0.2351013782
-    bestIteration = 48
-    
-    
-    bestTest = 0.2328359308
-    bestIteration = 230
-    
-    
-    bestTest = 0.2343135983
-    bestIteration = 63
-    
-    
-    bestTest = 0.233715121
-    bestIteration = 355
-    
-    
-    bestTest = 0.2342361596
-    bestIteration = 67
-    
-    
-    bestTest = 0.2328550793
-    bestIteration = 523
-    
-    
-    bestTest = 0.2340902114
-    bestIteration = 76
-    
-    
-    bestTest = 0.2325753143
-    bestIteration = 395
-    
-    
-    bestTest = 0.2340751339
-    bestIteration = 102
-    
-    Wall time: 3h 51min 19s
-    
-
-
-```python
 print('Best params for CatBoost', grid_search_result['params'])
 ```
 
@@ -1495,7 +1200,7 @@ res_df
 
 С учетом результатов двустороннего Т-теста проверки гипотезы равенства среднего и значения метрики на отложенной выборке оставляем лучшие параметры только для алгоритмов случайного леса и xgboost
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Блендинг ответов различных классификаторов
 Попробуем смешать ответы классификаторов с различными весами и оценить качество таких предсказаний на отложенной выборке
@@ -1528,48 +1233,6 @@ for clf in ansamble:
     cb
     Wall time: 10min 36s
     
-
-
-```python
-roc_df = pd.DataFrame(columns=['lr', 'xgb', 'gb', 'rf', 'cb', 'Valid_w'])
-roc_df
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lr</th>
-      <th>xgb</th>
-      <th>gb</th>
-      <th>rf</th>
-      <th>cb</th>
-      <th>Valid_w</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python
@@ -1725,7 +1388,7 @@ write_to_submission_file(pred_y, '{}lr{}gb{}xgb{}rf{}cb.csv'.format(w_lr, w_gb, 
 
 Блендинг ответов пятерых алгоритмов помог улучшить качество модели
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Перспективы улучшения
 Обучим модель на основе алгоритма градиентного бустинга и проанализируем важные (с точки зрения модели) признаки
@@ -1744,217 +1407,7 @@ model.fit(train_X, train_y)
 
 feature_names = numeric_columns + model.steps[0][1].transformer_list[1][1].named_steps['encoding'].get_feature_names()
 display_html(eli5.show_weights(estimator=gb, feature_names=feature_names, top=10))
-```
 
-
-
-    <style>
-    table.eli5-weights tr:hover {
-        filter: brightness(85%);
-    }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <table class="eli5-weights eli5-feature-importances" style="border-collapse: collapse; border: none; margin-top: 0em; table-layout: auto;">
-    <thead>
-    <tr style="border: none;">
-        <th style="padding: 0 1em 0 0.5em; text-align: right; border: none;">Weight</th>
-        <th style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">Feature</th>
-    </tr>
-    </thead>
-    <tbody>
-
-        <tr style="background-color: hsl(120, 100.00%, 80.00%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.3060
-
-                    &plusmn; 0.4159
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var126
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 92.47%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0758
-
-                    &plusmn; 0.1728
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var189
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 92.62%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0736
-
-                    &plusmn; 0.1767
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var73
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 93.03%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0678
-
-                    &plusmn; 0.2379
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var113
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 93.83%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0571
-
-                    &plusmn; 0.1449
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var74
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 94.28%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0511
-
-                    &plusmn; 0.2009
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                26_2
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 96.17%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0289
-
-                    &plusmn; 0.1120
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                26_1
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 96.65%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0238
-
-                    &plusmn; 0.1173
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                14_1
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 96.96%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0207
-
-                    &plusmn; 0.1848
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var81
-            </td>
-        </tr>
-
-        <tr style="background-color: hsl(120, 100.00%, 97.24%); border: none;">
-            <td style="padding: 0 1em 0 0.5em; text-align: right; border: none;">
-                0.0180
-
-                    &plusmn; 0.1146
-
-            </td>
-            <td style="padding: 0 0.5em 0 0.5em; text-align: left; border: none;">
-                Var13
-            </td>
-        </tr>
-
-
-
-            <tr style="background-color: hsl(120, 100.00%, 97.24%); border: none;">
-                <td colspan="2" style="padding: 0 0.5em 0 0.5em; text-align: center; border: none; white-space: nowrap;">
-                    <i>&hellip; 287 more &hellip;</i>
-                </td>
-            </tr>
-
-
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```python
 top_fe = ['Var126', 'Var189', 'Var113', 'Var73', 'Var74', 'Var81', 'Var13']
 top_fe.append(cat_columns[26])
 top_fe.append(cat_columns[14])
@@ -2139,6 +1592,9 @@ data[top_fe[-2:]].describe()
 
 
 
+Почти все важные признаки имеют высокий уровень заполненности. Значения вещественных признаков не имеют дробной части. Скорее всего здесь речь не о счетах, а о целочисленных измерениях трафика, обращений, сервисов. Некоторые из них имеют и отрицательные значения - это наталкивает на мысль о величине изменения какой-то целочисленной меры, заложенной в признак.
+Самые важные категориальные признаки имеют 2-3 категории. Возможно это внутрикорпоративное обозначение уровня обслуживания клиента, либо его юридический статус.
+
 Для наглядности заменим пропуски в топ-вещественных переменных отрицательными числами, превышающими на порядок дисперсию значений соответствующего признака.
 
 
@@ -2164,7 +1620,7 @@ for idx, feature in enumerate(top_fe[:-2]):
 ```
 
 
-![png](output_83_0.png)
+![png](output_78_0.png)
 
 
 
@@ -2173,14 +1629,14 @@ sns.pairplot(data_top[top_fe[:-2] + ['actual']], hue='actual');
 ```
 
 
-![png](output_84_0.png)
+![png](output_79_0.png)
 
 
 Облака точек разных классов хорошо различимы для всех топ-признаков. В переменных Var126 и Var189 (обладающих максимальными весами для модели) половина целевого класса сосредоточена в пропусках. Объекты с пропущенными значениями различимы в парах с признаками Var113, Var81. Для интерпретируемости пропуски были заменены на число -99 для вещественных признаков и строку Nan для категориальных. Простое заполнение пропусков не позволит различить объекты. Необходимо провести исследование различных подходов к заполнению пропусков, либо выяснить природу этих признаков.
 
 Немалая часть объектов с пропусками относится к классу оттока. Тем не менее в некоторых парах классы можно отделить и на уровне пропусков (Var126+Var13, Var189+Var13).
 
-Сделаем предсказания на отложенной выборке и посмотрим на каких объектах ошибается классификатор. Признаковое пространство для анализа сузим до топ10 признаков отранжированных по степени важности для нашей модели. Пустые значения для интерпретируемости заменим на отрицательное число, превышающее на порядок дисперсию значений признака, и посмотрим распределения признаков для различных случаев срабатывания классификатора
+Сделаем предсказания на отложенной выборке и посмотрим на каких объектах ошибается классификатор. Пустые значения для интерпретируемости заменим на отрицательное число, превышающее на порядок дисперсию значений признака, и посмотрим распределения признаков для различных случаев срабатывания классификатора.
 
 
 ```python
@@ -2255,14 +1711,14 @@ for idx, feature in enumerate(list(set(pred_valid.columns) - set(['actual', 'pre
 ```
 
 
-![png](output_91_0.png)
+![png](output_86_0.png)
 
 
 Больше половины объектов, неверно классифицированных негативными, найдено в области пустых значений признаков Var126, Var189. Были использованы различные подходы к заполнению пропусков (регрессия, стохастическая регрессия, случайное заполнение). Тем не менее простое заполнение средним значением дает самый лучший результат. 
 
 Дополнительная информация о природе этих признаков существенно улучшит модель через новые идеи заполнения пропусков в этих переменных.
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Оценка потенциального экономического эффекта от внедрения полученного решения
 
@@ -2313,18 +1769,6 @@ labels_xl.sort_values(by='predict_proba', ascending=False, inplace=True)
 
 
 ```python
-labels_xl['pred'].value_counts().loc[1]
-```
-
-
-
-
-    307
-
-
-
-
-```python
 campaign = np.arange(0.1,1.1,0.05)
 
 for thr in np.arange(0.4,0.7,0.05):
@@ -2346,12 +1790,12 @@ plt.legend();
 ```
 
 
-![png](output_100_0.png)
+![png](output_94_0.png)
 
 
 В зависимости от требований бизнеса (ограниченность бюджета или количественные цели, поставленные инвесторами) можно зафиксировать порог классификации и подобрать оптимальное количество пользователей, отранжированных по убыванию предсказанной вероятности принадлежности к целевому классу, для проведения кампании.
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Дизайн возможного АB теста
 
@@ -2386,7 +1830,7 @@ plt.legend();
 * Подбор порога уровня значимости отвержения нулевой гипотезы исходя из стратегии бизнеса
 * Мониторинг изменений в данных, новых факторов, новых событий (к примеру пандемия)
 
-[Наверх](#План:)
+[Наверх](#План)
 
 ## Итоги
 Построенная модель решает поставленную задачу прогнозирования оттока клиентов с экономически обоснованой эффективностью. 
