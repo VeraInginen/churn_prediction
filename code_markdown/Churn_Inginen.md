@@ -1841,7 +1841,18 @@ plt.legend();
 * Актуализация горизонта прогнозирования, критериев оттока
 * Регулярное измерение и анализ метрик качества, времени обучения
 
-<img src="retain.jpg" />
+
+```python
+from IPython.display import Image
+Image("retain.jpg")
+```
+
+
+
+
+![jpeg](output_100_0.jpg)
+
+
 
 
 ```python
